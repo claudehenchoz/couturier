@@ -4,4 +4,6 @@ reg ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v Enable
 powershell -Command "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force" <NUL
 %SystemRoot%\SysWOW64\cmd.exe /c powershell -Command "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force" <NUL
 
-powershell -File e:\init-control.ps1
+call e:\install-winrm.cmd
+sc config winrm start= auto
+sc start winrm
